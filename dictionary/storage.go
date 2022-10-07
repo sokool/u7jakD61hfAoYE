@@ -12,7 +12,7 @@ type Storage struct {
 }
 
 func NewStorage(w ...Word) *Storage {
-	return (&Storage{node: newLetter()}).Put(w...)
+	return (&Storage{node: newNode()}).Put(w...)
 }
 
 func (s *Storage) Put(w ...Word) *Storage {
@@ -24,7 +24,7 @@ func (s *Storage) Put(w ...Word) *Storage {
 		for k := range w[i] {
 			l := unicode.ToLower(rune(w[i][k]))
 			if _, ok := c.letters[l]; !ok {
-				c.letters[l] = newLetter()
+				c.letters[l] = newNode()
 			}
 			c = c.letters[l]
 		}
@@ -80,7 +80,7 @@ type node struct {
 	count int
 }
 
-func newLetter() *node {
+func newNode() *node {
 	return &node{map[rune]*node{}, 0}
 }
 
