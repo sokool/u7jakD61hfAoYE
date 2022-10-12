@@ -46,10 +46,6 @@ func (s *Storage) Search(w Word) Words {
 	if n == nil {
 		return a
 	}
-	if n.count > 0 {
-		a[w] = n.count
-		return a
-	}
 	n.find(w, a)
 	return a
 }

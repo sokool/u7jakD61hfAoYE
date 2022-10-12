@@ -30,7 +30,7 @@ func TestStorage(t *testing.T) {
 			expect:      "aqua",
 		},
 		{
-			description: "put three different case same words, expect one",
+			description: "put three different case same words",
 			words:       []Word{"aqua", "Aqua", "AQUA"},
 			query:       "aqua",
 			expect:      "aqua",
@@ -46,6 +46,12 @@ func TestStorage(t *testing.T) {
 			words:       []Word{"aqua", "atlas", "Aquarium", "aspirin", "ATLAs"},
 			query:       "a",
 			expect:      "atlas",
+		},
+		{
+			description: "search most frequent word when only prefix given",
+			words:       []Word{"a", "ab", "ab"},
+			query:       "a",
+			expect:      "ab",
 		},
 	}
 
